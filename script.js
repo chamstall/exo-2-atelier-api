@@ -4,7 +4,7 @@ const URL = "http://localhost:3000/utilisateurs";
 function getUsers() {
     fetch(URL).then(response => response.json())
         .then(users => {
-            console.log("utilisateurs recuperés avec succes", users);
+            alert("utilisateurs recuperés avec succes", users);
         }) //le users represente ici les donés renvoyés par le serveur cad les data
         .catch(error => {
             console.log("erreur lors de la recuperation des users", error);
@@ -16,10 +16,10 @@ function getUserById(userId) {
     fetch(`${URL}/${userId}`)
         .then(response => response.json())
         .then(user1 => {
-            console.log("utilisateur avec id 1 recuperé avec succes", user1);
+            alert("utilisateur avec id 1 recuperé avec succes" + " " + JSON.stringify(user1));
         })
         .catch(error => {
-            console.error("Erreur lors de la récupération de l\'utilisateur:", error);
+            console.log("Erreur lors de la récupération de l\'utilisateur:", error);
         });
 };
 
@@ -33,7 +33,7 @@ function createUser(newUser) {
         body: JSON.stringify(newUser)
     })
         .then(response => response.json())
-        .then(users => console.log("nouvel user créé avec succes", users))
+        .then(users => alert("nouvel user créé avec succes" + " " + JSON.stringify(users)))
         .catch(error => console.error("Erreur lors de la creation du nouvel utilisateur", error));
 };
 
@@ -50,7 +50,7 @@ function updateUser(userId, updatedUser) {
         // updateduser est un objet qui va contenir les informations du nouvel user
     })
         .then(response => response.json())
-        .then(userUpdated => console.log("utilisateur avec l'id 2 mis à jour avec succes", userUpdated))
+        .then(userUpdated => alert("utilisateur avec l'id 2 mis à jour avec succes" + " " + JSON.stringify(userUpdated)))
         .catch(error => console.log("erreur lors de la mise à jour de l'utilisateur avec l'id 2", error));
 };
 
@@ -62,14 +62,14 @@ function deleteUser(userId) {
         method: "DELETE"
     })
     .then(response => response.json())
-    .then(userDeleted =>console.log("l'utilisateur avec l'id 1 a été supprimé avec success", userDeleted))
+    .then(userDeleted =>alert("l'utilisateur avec l'id 1 a été supprimé avec success" + " " + JSON.stringify(userDeleted)))
     .catch(error =>console.log("erreur lors de la suppression de l'utilisateur avec l'id 3", error));
 };
 
 // ************************APPEL DES FONCTIONS*******************************
 
 // appel de la fonction getUsers() pour recuperer tous les utilisateurs.
-getUsers()
+// getUsers()
 
 // Exemple d'appel pour récupérer un utilisateur par son ID (par exemple, utilisateur avec l'ID 1)
 
